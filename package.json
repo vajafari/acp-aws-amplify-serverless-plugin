@@ -1,36 +1,14 @@
 {
-  "name": "aws-amplify-serverless-plugin",
-  "version": "1.4.0",
-  "description": "A plugin for the Serverless Framework that outputs AWS Amplify artifacts based on the deployed resources.",
-  "keywords": [
-    "serverless",
-    "plugin",
-    "aws",
-    "cloudformation",
-    "amplify"
-  ],
-  "main": "./index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/awslabs/aws-amplify-serverless-plugin.git"
-  },
-  "author": "Adrian Hall <adrianha@amazon.com>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/awslabs/aws-amplify-serverless-plugin/issues"
-  },
-  "homepage": "https://github.com/awslabs/aws-amplify-serverless-plugin#readme",
+  "name": "acp-aws-amplify-serverless-plugin",
+  "version": "1.0.5",
+  "description": "This is bug free Serverless AWS exports plugin for ACP project",
+  "main": "index.js",
   "scripts": {
-    "build": "echo 'No build is required right now'"
   },
   "dependencies": {
-    "amplify-graphql-docs-generator": "^0.1.29",
-    "aws-appsync-codegen": "^0.17.5",
-    "chalk": "^2.4.1",
-    "json-stable-stringify-pretty": "^1.2.0",
-    "serverless": "^1.32.0"
+    "chalk": "^4.1.2",
+    "json-stable-stringify-pretty": "^1.2.0"
   },
-  "peerDependencies": {
-    "serverless": "1.x"
-  }
+  "devDependencies": {},
+  "license": "MIT"
 }

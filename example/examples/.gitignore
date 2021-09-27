@@ -1,6 +1,0 @@
-// Ignoring generated files
-schema.json
-awsconfiguration.json
-aws-exports.*
-operations.graphql
-API.swift
