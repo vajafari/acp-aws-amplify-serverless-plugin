@@ -1,5 +1,11 @@
 # Changelog
 
+# [1.1.0] - 2021-12-26
+
+### Changed
+
+- Add Userpool Id and client id to aws export file
+
 # [1.0.5] - 2021-09-26
 
 ### Changed
