@@ -1,6 +1,6 @@
 {
   "name": "acp-aws-amplify-serverless-plugin",
-  "version": "1.0.7",
+  "version": "1.1.1",
   "description": "This is bug free Serverless AWS exports plugin for ACP project",
   "main": "index.js",
   "scripts": {

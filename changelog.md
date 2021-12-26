@@ -1,5 +1,11 @@
 # Changelog
 
+# [1.1.1] - 2021-12-26
+
+### Fixed
+
+- Remove bug on user pool id
+
 # [1.1.0] - 2021-12-26
 
 ### Changed

@@ -126,18 +126,14 @@ class ServerlessPlugin {
     let config = {};
     config.aws_project_region = this.provider.getRegion();
 
-    if (fileDetails.hasOwnProperty('appClient')) {
-        const appClient = resources.find(r => r.ResourceType === 'AWS::Cognito::UserPoolClient' && r.LogicalResourceId === fileDetails.appClient);
-        if (typeof appClient !== 'undefined') {
-            config.aws_cognito_region = appClient.metadata.UserPoolClient.UserPoolId.split('_')[0];
-            config.aws_user_pools_id = appClient.metadata.UserPoolClient.UserPoolId;
-            config.aws_user_pools_web_client_id = appClient.metadata.UserPoolClient.ClientId;
-
-            if (appClient.metadata.UserPoolClient.hasOwnProperty('ClientSecret')) {
-                config.aws_user_pools_web_client_secret = appClient.metadata.UserPoolClient.ClientSecret;
-            }
-        } else {
-            throw new Error(`Invalid appClient specified: ${fileDetails.appClient}`);
+    
+    const appClient = resources.find(r => r.ResourceType === 'AWS::Cognito::UserPoolClient');
+    if (typeof appClient !== 'undefined') {
+        config.aws_cognito_region = appClient.metadata.UserPoolClient.UserPoolId.split('_')[0];
+        config.aws_user_pools_id = appClient.metadata.UserPoolClient.UserPoolId;
+        config.aws_user_pools_web_client_id = appClient.metadata.UserPoolClient.ClientId;
+        if (appClient.metadata.UserPoolClient.hasOwnProperty('ClientSecret')) {
+            config.aws_user_pools_web_client_secret = appClient.metadata.UserPoolClient.ClientSecret;
         }
     }
     
