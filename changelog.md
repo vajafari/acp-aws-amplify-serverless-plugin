@@ -1,5 +1,11 @@
 # Changelog
 
+# [1.2.0] - 2021-03-30
+
+### Changed
+
+- Add API 2 to exports
+
 # [1.1.1] - 2021-12-26
 
 ### Fixed

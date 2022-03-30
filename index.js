@@ -95,6 +95,10 @@ class ServerlessPlugin {
                 this.log('debug', `Processing ${JSON.stringify(resource)}`);
                 detailedResources.push(resource);
                 break;
+            case 'AWS::ApiGatewayV2::Api':
+                this.log('debug', `Processing ${JSON.stringify(resource)}`);
+                detailedResources.push(resource);
+                break;
             default:
                 this.log('debug', `Skipping ${JSON.stringify(resource)}`);
                 break;
@@ -191,15 +195,23 @@ class ServerlessPlugin {
         }
     }
 
-    let apigw = resources.filter(r => r.ResourceType === 'AWS::ApiGateway::RestApi');
+    let apigw = resources.filter(r => r.ResourceType === 'AWS::ApiGateway::RestApi' || r.ResourceType === 'AWS::ApiGatewayV2::Api');
     if (apigw.length > 0) {
         let apiRecords = [];
         apigw.forEach((v) => {
-            apiRecords.push({
-                endpoint: `https://${v.PhysicalResourceId}.execute-api.${this.provider.getRegion()}.amazonaws.com/${this.provider.getStage()}`,
-                name: v.LogicalResourceId,
-                region: this.provider.getRegion()
-            });
+            if(r.ResourceType === 'AWS::ApiGateway::RestApi') {
+                apiRecords.push({
+                    endpoint: `https://${v.PhysicalResourceId}.execute-api.${this.provider.getRegion()}.amazonaws.com/${this.provider.getStage()}`,
+                    name: v.LogicalResourceId,
+                    region: this.provider.getRegion()
+                });
+            } else if (r.ResourceType === 'AWS::ApiGatewayV2::Api'){
+                apiRecords.push({
+                    endpoint: `wss://${v.PhysicalResourceId}.execute-api.${this.provider.getRegion()}.amazonaws.com/${this.provider.getStage()}`,
+                    name: v.LogicalResourceId,
+                    region: this.provider.getRegion()
+                });
+            }
         });
         config.aws_cloud_logic_custom = apiRecords;
     }
