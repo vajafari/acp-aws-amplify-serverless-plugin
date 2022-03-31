@@ -199,13 +199,13 @@ class ServerlessPlugin {
     if (apigw.length > 0) {
         let apiRecords = [];
         apigw.forEach((v) => {
-            if(r.ResourceType === 'AWS::ApiGateway::RestApi') {
+            if(v.ResourceType === 'AWS::ApiGateway::RestApi') {
                 apiRecords.push({
                     endpoint: `https://${v.PhysicalResourceId}.execute-api.${this.provider.getRegion()}.amazonaws.com/${this.provider.getStage()}`,
                     name: v.LogicalResourceId,
                     region: this.provider.getRegion()
                 });
-            } else if (r.ResourceType === 'AWS::ApiGatewayV2::Api'){
+            } else if (v.ResourceType === 'AWS::ApiGatewayV2::Api'){
                 apiRecords.push({
                     endpoint: `wss://${v.PhysicalResourceId}.execute-api.${this.provider.getRegion()}.amazonaws.com/${this.provider.getStage()}`,
                     name: v.LogicalResourceId,

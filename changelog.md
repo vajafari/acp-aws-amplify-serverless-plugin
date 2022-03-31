@@ -1,5 +1,11 @@
 # Changelog
 
+# [1.2.1] - 2021-03-31
+
+### Fixed
+
+- Remove bug on aws WEB API 2
+
 # [1.2.0] - 2021-03-30
 
 ### Changed
